@@ -40,7 +40,5 @@ public class JmsProduce {
         } finally {
             System.out.println("发送消息已完成");
         }
-
-
     }
 }
