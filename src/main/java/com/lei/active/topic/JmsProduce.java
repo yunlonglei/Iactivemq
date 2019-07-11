@@ -29,12 +29,13 @@ public class JmsProduce {
             MessageProducer producer = session.createProducer(topic);
             //6.通过producer生产3条消息发给MQ的queue
             int messageCount = 3;
-            for (int i = 0; i <= messageCount; i++) {
+            for (int i = 1; i <= messageCount; i++) {
                 TextMessage textMessage = session.createTextMessage("topic_msg---" + i);
                 producer.send(textMessage);
                 //MapMessage示例
                 MapMessage mapMessage = session.createMapMessage();
                 mapMessage.setString("k1","v1");
+                mapMessage.setStringProperty("v1","vip");
                 producer.send(mapMessage);
             }
             producer.close();

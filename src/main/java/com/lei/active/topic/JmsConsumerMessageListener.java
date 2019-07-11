@@ -43,6 +43,7 @@ public class JmsConsumerMessageListener {
                     try {
                         MapMessage mapMessage = (MapMessage) message;
                         System.out.println("消费者接收到的消息是：" + mapMessage.getString("k1"));
+                        System.out.println("消费者接收到的map消息属性是：" + mapMessage.getStringProperty("v1"));
                     } catch (JMSException e) {
                         e.printStackTrace();
                     }
