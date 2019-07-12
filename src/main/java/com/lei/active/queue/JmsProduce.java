@@ -4,6 +4,7 @@ package com.lei.active.queue;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
+
 /**
  * @Author: leiyunlong
  * @Date: 2019/7/4 10:56
@@ -22,10 +23,15 @@ public class JmsProduce {
             connection.start();
             //3.创建会话session 第一个参数叫事务，第二个参数叫签收
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+            System.out.println(session);
             //4.创建目的地，主题是queue还是topic
             Queue queue = session.createQueue(QUEUE_NAME);
             //5.创建消息生产者
             MessageProducer producer = session.createProducer(queue);
+            // TODO 这里加入非持久化
+            //producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
+            // TODO 这里加入非持久化
+            //producer.setDeliveryMode(DeliveryMode.PERSISTENT);
             //6.通过producer生产3条消息发给MQ的queue
             int messageCount = 3;
             for (int i = 0; i <= messageCount; i++) {
