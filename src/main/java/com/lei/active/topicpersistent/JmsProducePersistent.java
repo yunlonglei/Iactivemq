@@ -1,4 +1,4 @@
-package com.lei.active.topic_persistent;
+package com.lei.active.topicpersistent;
 
 
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -10,7 +10,7 @@ import javax.jms.*;
  * @Date: 2019/7/12 10:56
  * @Version 1.0
  */
-public class JmsProduce_persistent {
+public class JmsProducePersistent {
     public static final String ACTIVEMQ_URL = "tcp://39.96.27.148:61616";
     public static final String TOPIC_NAME = "topic01";
 
@@ -20,7 +20,6 @@ public class JmsProduce_persistent {
         try {
             //2.通过工厂获得的连接Connection，请启动访问
             Connection connection = activemqConnectionFactory.createConnection();
-            // 增加ClientID
             //3.创建会话session 第一个参数叫事务，第二个参数叫签收
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             //4.创建目的地，主题是queue还是topic
@@ -36,10 +35,11 @@ public class JmsProduce_persistent {
                 producer.send(textMessage);
                 System.out.println("topic_msg---" + i);
                 //MapMessage示例
-//                MapMessage mapMessage = session.createMapMessage();
-//                mapMessage.setString("k1","v1");
-//                mapMessage.setStringProperty("v1","vip");
-//                producer.send(mapMessage);
+                MapMessage mapMessage = session.createMapMessage();
+                mapMessage.setString("k1","v1");
+                //对属性的配置
+                mapMessage.setStringProperty("v1","vip");
+                producer.send(mapMessage);
             }
             producer.close();
             session.close();
