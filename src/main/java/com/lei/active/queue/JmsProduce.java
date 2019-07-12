@@ -30,7 +30,7 @@ public class JmsProduce {
             MessageProducer producer = session.createProducer(queue);
             // TODO 这里加入非持久化
             //producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
-            // TODO 这里加入非持久化
+            // TODO 这里加入持久化
             //producer.setDeliveryMode(DeliveryMode.PERSISTENT);
             //6.通过producer生产3条消息发给MQ的queue
             int messageCount = 3;
