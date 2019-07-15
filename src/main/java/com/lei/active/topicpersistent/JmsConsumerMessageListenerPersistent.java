@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * @Author: leiyunlong
  * @Date: 2019/7/12 9:59
- * @Version 1.0
+ * @Version 持久性V1.0
  */
 public class JmsConsumerMessageListenerPersistent {
     public static final String ACTIVEMQ_URL = "tcp://39.96.27.148:61616";
