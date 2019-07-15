@@ -8,7 +8,7 @@ import javax.jms.*;
 /**
  * @Author: leiyunlong
  * @Date: 2019/7/4 10:56
- * @Version 1.0
+ * @Version 加持久化的queue1.0
  */
 public class JmsProduce {
     public static final String ACTIVEMQ_URL = "tcp://39.96.27.148:61616";
